@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { BaseRoutes } from "./api/routes";
 
 const app = express();
 
@@ -14,6 +15,9 @@ app.get("/", (req, res) => {
   res.send("Server is running!");
 });
 
+app.use('/api', new BaseRoutes().getRouter());
+
 app.listen(PORT, () => {
-  // console.log("running on port 4000");
+  // tslint:disable-next-line:no-console
+  console.log("running on port 4000");
 });
